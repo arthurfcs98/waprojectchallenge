@@ -2,6 +2,12 @@ import cors from 'cors';
 import express from 'express';
 import 'express-async-error';
 import 'reflect-metadata';
+import { defaultDataSource } from './database';
+
+defaultDataSource
+    .initialize()
+    .then(() => console.log('Database Connected!!'))
+    .catch(err => console.error(err));
 
 const app = express();
 
