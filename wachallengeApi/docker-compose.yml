@@ -1,0 +1,18 @@
+version: '3.7'
+
+services:
+    wachallenge:
+        image: postgres
+        container_name: database_wachallenge
+        restart: always
+        ports:
+            - 5432:5432
+        environment:
+            - POSTGRES_USER=docker
+            - POSTGRES_PASSWORD=wachallenge2022
+            - POSTGRES_DB=wachallenge
+        volumes:
+            - pgdata:/data/postgres
+
+volumes:
+    pgdata:
