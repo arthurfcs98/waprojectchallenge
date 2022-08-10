@@ -1,0 +1,22 @@
+{
+  "name": "waprojectchallenge",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/arthurfcs98/waprojectchallenge.git",
+  "author": "Arthur Freitas Cesarino dos Santos <cesarinoArthur@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.18.1",
+    "express-async-error": "^0.0.2",
+    "pg": "^8.7.3",
+    "reflect-metadata": "^0.1.13",
+    "typeorm": "^0.3.7"
+  },
+  "devDependencies": {
+    "jest": "^28.1.3",
+    "ts-jest": "^28.0.7",
+    "ts-node-dev": "^2.0.0",
+    "typescript": "^4.7.4"
+  }
+}
