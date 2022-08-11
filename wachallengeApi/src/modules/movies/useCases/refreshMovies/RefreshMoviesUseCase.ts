@@ -6,24 +6,25 @@ import { IMoviesRepository } from '../../repositories/IMoviesRepository';
 class RefreshMoviesUseCase {
     constructor(private moviesRepository: IMoviesRepository) {}
 
-    async execute(refresh_page = 1) {
-        const { data: firstPageMovies } = await movieApi.get('/movie/popular', {
+    async execute(refresh_page: number) {
+        if (refresh_page > 500)
+            throw new AppError('page must be less than or equal to 500', 422);
+
+        const { data: responseData1 } = await movieApi.get('/movie/popular', {
             params: {
                 page: 2 * refresh_page - 1,
             },
         });
-        const { data: secondPageMovies } = await movieApi.get(
-            '/movie/popular',
-            {
-                params: {
-                    page: 2 * refresh_page,
-                },
+
+        const { data: responseData2 } = await movieApi.get('/movie/popular', {
+            params: {
+                page: 2 * refresh_page,
             },
-        );
+        });
 
         const movies = [
-            ...(firstPageMovies.results as Movie[]),
-            ...(secondPageMovies.results as Movie[]),
+            ...(responseData1.results as Movie[]),
+            ...(responseData2.results as Movie[]),
         ];
 
         movies.forEach(movie => delete movie.id);
