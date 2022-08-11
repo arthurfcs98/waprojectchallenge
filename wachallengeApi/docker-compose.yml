@@ -13,6 +13,18 @@ services:
             - POSTGRES_DB=wachallenge
         volumes:
             - pgdata:/data/postgres
+    wachallenge_test:
+        image: postgres
+        container_name: database_wachallenge_test
+        restart: always
+        ports:
+            - 5438:5432
+        environment:
+            - POSTGRES_USER=docker
+            - POSTGRES_PASSWORD=wachallenge2022
+            - POSTGRES_DB=wachallenge
+        volumes:
+            - pgdata:/data/postgres
 
 volumes:
     pgdata:
