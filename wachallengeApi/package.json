@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "dev": "ts-node-dev --transpile-only --ignore-watch node_modules src/server.ts",
-    "test": "jest",
+    "test": "set NODE_ENV=test&jest --runInBand --forceExit",
     "migration:run": "ts-node-dev ./node_modules/typeorm/cli migration:run -d ./src/database/index.ts",
     "migration:revert": "ts-node-dev ./node_modules/typeorm/cli migration:revert -d ./src/database/index.ts",
     "typeorm": "ts-node-dev ./node_modules/typeorm/cli"
@@ -21,12 +21,15 @@
     "express-async-errors": "^3.1.1",
     "pg": "^8.7.3",
     "reflect-metadata": "^0.1.13",
+    "supertest": "^6.2.4",
     "typeorm": "^0.3.7",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
     "@types/cors": "^2.8.12",
     "@types/express": "^4.17.13",
+    "@types/jest": "^28.1.6",
+    "@types/supertest": "^2.0.12",
     "@types/uuid": "^8.3.4",
     "@typescript-eslint/eslint-plugin": "^5.32.0",
     "@typescript-eslint/parser": "^5.32.0",
