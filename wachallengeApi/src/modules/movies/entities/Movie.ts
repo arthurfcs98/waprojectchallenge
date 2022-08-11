@@ -1,16 +1,16 @@
-import { Column, Entity, Timestamp } from 'typeorm';
+import { Column, Entity, PrimaryColumn, Timestamp } from 'typeorm';
 import { v4 as uuidV4 } from 'uuid';
 
 @Entity('movies')
-class Movies {
-    @Column()
+class Movie {
+    @PrimaryColumn()
     id: string;
 
     @Column()
     title: string;
 
     @Column()
-    original_lenguage: string;
+    original_language: string;
 
     @Column()
     overview: string;
@@ -29,4 +29,4 @@ class Movies {
     }
 }
 
-export { Movies };
+export { Movie };

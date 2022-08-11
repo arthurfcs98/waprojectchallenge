@@ -16,7 +16,7 @@ export class CreateTableMovies1660225411349 implements MigrationInterface {
                         type: 'varchar',
                     },
                     {
-                        name: 'original_lenguage',
+                        name: 'original_language',
                         type: 'varchar',
                     },
                     {
