@@ -7,7 +7,7 @@ let connection: DataSource;
 describe('Refresh Movies Controller', () => {
     beforeAll(async () => {
         connection = await defaultDataSource.initialize();
-        connection.runMigrations();
+        await connection.runMigrations();
     });
     afterAll(async () => {
         await connection.dropDatabase();
