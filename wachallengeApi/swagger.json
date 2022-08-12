@@ -1,0 +1,98 @@
+{
+    "openapi": "3.0.0",
+    "info": {
+        "title": "WaChallenge API Documentation",
+        "description": "This is an movie api",
+        "version": "1.0.0",
+        "contact": {
+            "email": "cesarinoarthur@gmail.com"
+        }
+    },
+    "paths": {
+        "/": {
+            "post": {
+                "tags": [
+                    "Movies"
+                ],
+                "summary": "Refresh Database Movies",
+                "description": "Refresh Database Movies",
+                "parameters":[{
+                    "name": "refresh_page",
+                    "in": "query",
+                    "description": "Quantity refresh database movies",
+                    "schema":{
+                        "type": "integer"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success"
+                    },
+                    "400": {
+                        "description": "Missing or wrong query params"
+                    },
+                    "422": {
+                        "description": "refresh_page must be less than or equal to 500"
+                    }
+                }
+            },
+            "get": {
+                "tags": [
+                    "Movies"
+                ],
+                "summary": "List Movies",
+                "description": "List movies with pagination",
+                "parameters":[{
+                    "name": "page",
+                    "in": "query",
+                    "description": "movie list page",
+                    "schema":{
+                        "type": "integer"
+                    }
+                }],
+                "responses": {
+                    "200": {
+                        "description": "Success",
+                        "content": {
+                            "application/json": {
+                                "schema": {
+                                    "type": "array",
+                                    "items": {
+                                        "type": "object",
+                                        "properties": {
+                                            "id": {
+                                                "type": "string"
+                                            },
+                                            "title": {
+                                                "type": "string"
+                                            },
+                                            "original_language": {
+                                                "type": "string"
+                                            },
+                                            "overview": {
+                                                "type": "string"
+                                            },
+                                            "poster_path": {
+                                                "type": "string"
+                                            },
+                                            "release_date": {
+                                                "type": "string"
+                                            },
+                                            "vote_average": {
+                                                "type": "string"
+                                            }
+                                        }
+                                    }
+
+                                }
+                            }
+                        }
+                    },
+                    "400": {
+                        "description": "Missing or wrong query params"
+                    }
+                }
+            }
+        }
+    }
+}
