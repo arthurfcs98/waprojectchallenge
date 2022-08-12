@@ -7,9 +7,9 @@ class RefreshMoviesUseCase {
     constructor(private moviesRepository: IMoviesRepository) {}
 
     async execute(refresh_page: number) {
-        if (refresh_page > 500)
+        if (refresh_page > 250)
             throw new AppError(
-                'refresh_page must be less than or equal to 500',
+                'refresh_page must be less than or equal to 250',
                 422,
             );
 
@@ -31,6 +31,7 @@ class RefreshMoviesUseCase {
         ];
 
         movies.forEach(movie => {
+            if (!movie.release_date) movie.release_date = null;
             movie.poster_path = `https://image.tmdb.org/t/p/original${movie.poster_path}`;
             delete movie.id;
         });
