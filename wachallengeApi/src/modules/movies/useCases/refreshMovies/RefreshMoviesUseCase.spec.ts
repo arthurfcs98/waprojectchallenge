@@ -31,7 +31,7 @@ describe('Refresh Movies', () => {
         await expect(
             refreshMoviesUseCase.execute(refresh_page),
         ).rejects.toEqual(
-            new AppError('page must be less than or equal to 500', 422),
+            new AppError('refresh_page must be less than or equal to 250', 422),
         );
     });
 });
